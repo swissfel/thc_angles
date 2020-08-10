@@ -108,5 +108,5 @@ layout = column(imgs, slider)
 #plt.show(p)
 p.x_range=Range1d(0, 180)
 p.y_range=Range1d(0, 180)
-curdoc().title = "Hello, world!"
+curdoc().title = "THC illustrator"
 curdoc().add_root(layout)
