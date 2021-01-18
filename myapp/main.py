@@ -62,26 +62,21 @@ source_top_flange_circle = ColumnDataSource(data=dict(x=x, y=y))
 
 
 g = plt.figure(title='Be Window - Geometry')
-imgurl = 'https://drive.switch.ch/index.php/apps/files_sharing/ajax/publicpreview.php?x=3360&y=1126&a=true&file=Chamber_01.jpg&t=ewZ1kPPzxpalNpc&scalingup=0'
+imgurl = 'https://drive.switch.ch/index.php/apps/files_sharing/ajax/publicpreview.php?x=3360&y=1040&a=true&file=Be_window9.JPG&t=WgAa3cg9sgVJFZK&scalingup=0'
 
 
-g.image_url(url=[imgurl], x=-152, y=-200, w=305, h=305, anchor="bottom_left")
+g.image_url(url=[imgurl], x=-165.5, y=-202.5, w=330, h=350, anchor="bottom_left")
 g.line('x', 'y', source=source_window_circle, line_width=5, line_color = 'red', legend_label="Be window")
 g.line('x', 'y', source=source_top_flange_circle, line_width=5, line_color = 'red')
-#g.image_url(url=['https://docs.bokeh.org/en/latest/_static/images/logo.png'], x=0, y=0, w=100, h=100, anchor="bottom_left")
 g.circle(x=0, y=0, size=15,fill_color="green", legend_label="Sample")
 
 
-
 def update_plot(attr, old, new):
-    beta = new
-    #beta = new
+    beta = new-90
     deltamin, deltamax = delta_from_beta(np.deg2rad(beta), gamma, r, e_window, e_sample, h)
-    new_source = ColumnDataSource(data=dict(x=np.rad2deg(gamma), y1=deltamin, y2 = deltamax))
-    source_window.data = new_source.data
+    source_window.data = dict(x=np.rad2deg(gamma), y1=deltamin, y2 = deltamax)
     x,y = circle(np.deg2rad(beta), e_window, e_sample, r)
-    new_source = ColumnDataSource(data=dict(x=x, y=y))
-    source_window_circle.data = new_source.data
+    source_window_circle.data = dict(x=x, y=y)
 
     #p.line('x', 'y', source=source, line_width=3, line_alpha=0.6)
     #push_notebook()
