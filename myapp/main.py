@@ -81,7 +81,7 @@ def circle(beta, e_window, e_sample, r):
     return x, y
 
 '''In-vacuum detector - scattering angles 1 position'''
-gamma_invac = np.linspace(0, np.pi, 361, endpoint=True)
+gamma_invac = np.linspace(0, np.pi, 121, endpoint=True)
 h_invac = 42
 l_invac = 80
 b_invac = 40
@@ -96,8 +96,8 @@ rect_edges_invac = np.vstack([rect_edges_invac,rect_edges_invac[0]])
 source_invac_rect = ColumnDataSource(data=dict(x=rect_edges_invac.T[0], y=rect_edges_invac.T[1]))
 
 '''In-vacuum detector - scattering angles cumulative all position'''
-betas = np.linspace(0,2*np.pi, 120)
-gammas = np.linspace(0.001,np.pi+0.001, 120)
+betas = np.linspace(0,2*np.pi, 60)
+gammas = np.linspace(0.001,np.pi+0.001, 60)
 radii_2d = np.array([radii_rectangle(l=l_invac, b=b_invac, e_det=e_invac, e_sample=e_sample_invac, gam=gammas, beta=beta ) for beta in betas])
 rs = np.array([np.nanmax(radii_2d, axis=(0,1)), np.nanmin(radii_2d, axis=(0,1))])
 deltamin, deltamax = [90-np.rad2deg(phi(rs[0], h_invac)),90-np.rad2deg(phi(rs[1], h_invac))]
@@ -106,7 +106,7 @@ source_invac_full_betas = ColumnDataSource(data=dict(x=np.rad2deg(gammas), y1=de
 
 
 '''Beryllium window - scattering angles 1 position'''
-gamma = np.linspace(0, np.pi, 3601, endpoint=True)
+gamma = np.linspace(0, np.pi, 361, endpoint=True)
 h = 36
 r = 70/2
 e_window = 30
