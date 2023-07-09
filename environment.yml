@@ -8,3 +8,8 @@ dependencies:
   - matplotlib
   - ipympl
   - ipywidgets
+  - bqplot
+  - ipympl
+  - ipyvolume
+  - scipy
+  - voila
